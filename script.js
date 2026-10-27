@@ -111,3 +111,91 @@ if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && !window.m
     }, { passive: true });
   });
 }
+
+// CINEMATIC MOTION PACK — optional effects, no libraries required.
+(() => {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) return;
+
+  // Brief cinematic intro; never blocks the page or navigation.
+  if (!sessionStorage.getItem('cinematicIntroSeen')) {
+    const intro = document.createElement('div');
+    intro.className = 'motion-intro';
+    intro.setAttribute('aria-hidden', 'true');
+    intro.innerHTML = '<div class="motion-intro-inner"><span class="motion-intro-mark">Y.</span><span>Every frame has a feeling.</span></div>';
+    document.body.appendChild(intro);
+    sessionStorage.setItem('cinematicIntroSeen', '1');
+    window.setTimeout(() => intro.remove(), 2200);
+  }
+
+  // Fine-grain floating particles on a lightweight canvas.
+  const canvas = document.createElement('canvas');
+  canvas.id = 'motion-canvas';
+  canvas.setAttribute('aria-hidden', 'true');
+  document.body.prepend(canvas);
+  const ctx = canvas.getContext('2d');
+  if (ctx) {
+    let w = 0, h = 0, particles = [];
+    const pointer = { x: -1000, y: -1000 };
+    const resize = () => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      w = window.innerWidth; h = window.innerHeight;
+      canvas.width = Math.floor(w * dpr); canvas.height = Math.floor(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const count = Math.min(54, Math.max(18, Math.floor((w * h) / 26000)));
+      particles = Array.from({ length: count }, () => ({ x: Math.random()*w, y: Math.random()*h, r: Math.random()*1.3+.3, vx: (Math.random()-.5)*.18, vy: (Math.random()-.5)*.18, a: Math.random()*.4+.12 }));
+    };
+    const draw = () => {
+      ctx.clearRect(0,0,w,h);
+      for (let i=0;i<particles.length;i++) {
+        const p=particles[i]; p.x+=p.vx; p.y+=p.vy;
+        if(p.x<0||p.x>w)p.vx*=-1; if(p.y<0||p.y>h)p.vy*=-1;
+        const dx=p.x-pointer.x,dy=p.y-pointer.y,dist=Math.hypot(dx,dy);
+        if(dist<125){p.x+=dx/(dist||1)*.15;p.y+=dy/(dist||1)*.15;}
+        ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(197,242,119,${p.a})`;ctx.fill();
+        for(let j=i+1;j<particles.length;j++){
+          const q=particles[j],d=Math.hypot(p.x-q.x,p.y-q.y);
+          if(d<95){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle=`rgba(197,242,119,${.055*(1-d/95)})`;ctx.lineWidth=.6;ctx.stroke();}
+        }
+      }
+      requestAnimationFrame(draw);
+    };
+    resize(); window.addEventListener('resize', resize, { passive:true });
+    window.addEventListener('pointermove', e=>{pointer.x=e.clientX;pointer.y=e.clientY;},{passive:true});
+    draw();
+  }
+
+  // Custom cursor ring that expands over clickable elements.
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    const ring=document.createElement('div');ring.className='cursor-ring';ring.setAttribute('aria-hidden','true');document.body.appendChild(ring);
+    let x=innerWidth/2,y=innerHeight/2,rx=x,ry=y;
+    window.addEventListener('pointermove',e=>{x=e.clientX;y=e.clientY;ring.style.left=x+'px';ring.style.top=y+'px';document.body.classList.add('pointer-active');},{passive:true});
+    document.addEventListener('pointerover',e=>{if(e.target.closest('a,button,.video-card,.project,.service'))ring.classList.add('is-hover');});
+    document.addEventListener('pointerout',e=>{if(e.target.closest('a,button,.video-card,.project,.service'))ring.classList.remove('is-hover');});
+    const follow=()=>{rx+=(x-rx)*.22;ry+=(y-ry)*.22;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(follow);};follow();
+  }
+
+  // Gentle 3D tilt, only for devices with a real mouse.
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.querySelectorAll('.project, .video-card').forEach(card=>{
+      card.addEventListener('pointermove',e=>{
+        const r=card.getBoundingClientRect(),px=(e.clientX-r.left)/r.width,py=(e.clientY-r.top)/r.height;
+        card.style.transform=`perspective(900px) rotateX(${(0.5-py)*4}deg) rotateY(${(px-0.5)*5}deg) translateY(-3px)`;
+      },{passive:true});
+      card.addEventListener('pointerleave',()=>{card.style.transform='';});
+    });
+    document.querySelectorAll('.button-primary,.nav-cta').forEach(btn=>{
+      btn.addEventListener('pointermove',e=>{const r=btn.getBoundingClientRect();btn.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.045}px,${(e.clientY-r.top-r.height/2)*.08}px)`;},{passive:true});
+      btn.addEventListener('pointerleave',()=>{btn.style.transform='';});
+    });
+  }
+
+  // Tiny click ripple on buttons (no effect on touch-only devices).
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.addEventListener('click',e=>{
+      if(!e.target.closest('a,button'))return;
+      const ripple=document.createElement('span');ripple.className='click-ripple';ripple.style.left=e.clientX+'px';ripple.style.top=e.clientY+'px';document.body.appendChild(ripple);
+      window.setTimeout(()=>ripple.remove(),700);
+    });
+  }
+})();

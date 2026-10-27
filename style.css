@@ -70,3 +70,67 @@ body.pointer-active .cursor-glow,body.pointer-active .cursor-core{opacity:1;}
 .video-card[hidden]{display:none!important}
 @media(max-width:700px){.gallery-toolbar{align-items:flex-start;flex-direction:column;margin-top:-8px}.gallery-filters{width:100%}.filter-button{flex:1;padding:10px 7px;font-size:7px}.hero-proof{gap:10px 14px}.ticker:before,.ticker:after{width:24px}}
 @media(prefers-reduced-motion:reduce){.scroll-progress span{transition:none}.hero-art,.brand-mark,.placeholder-play{transition:none}}
+
+/* === CINEMATIC MOTION PACK === */
+:root{--motion-ease:cubic-bezier(.16,1,.3,1)}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{background-image:radial-gradient(ellipse at 15% 8%,#c5f27708,transparent 34%),radial-gradient(ellipse at 88% 35%,#7c8cff06,transparent 32%)}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.12;background-image:linear-gradient(#ffffff07 1px,transparent 1px),linear-gradient(90deg,#ffffff07 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,black,transparent 78%)}
+.nav-wrap,main,.ticker,.footer{position:relative;z-index:1}
+/* Fast, elegant page entrance */
+.motion-intro{position:fixed;inset:0;z-index:9999;background:#090a0c;display:grid;place-items:center;pointer-events:none;animation:intro-away .8s var(--motion-ease) 1.15s forwards}
+.motion-intro-inner{display:flex;align-items:center;gap:14px;color:#f3f3ef;font:10px var(--mono);letter-spacing:.22em;text-transform:uppercase;animation:intro-text .8s var(--motion-ease) both}
+.motion-intro-mark{display:grid;place-items:center;width:36px;height:36px;background:var(--accent);color:#0b0c10;font:800 16px var(--sans);border-radius:50%;box-shadow:0 0 35px #c5f27744;animation:intro-pulse 1s ease-in-out infinite alternate}
+@keyframes intro-away{to{opacity:0;visibility:hidden;transform:translateY(-1.5%)} }
+@keyframes intro-text{from{opacity:0;transform:translateY(16px);letter-spacing:.42em}to{opacity:1;transform:translateY(0);letter-spacing:.22em}}
+@keyframes intro-pulse{to{box-shadow:0 0 55px #c5f27788;transform:scale(1.06)}}
+/* Cinematic ambient particles */
+#motion-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.6}
+.hero{isolation:isolate}
+.hero-copy h1{animation:hero-title-in 1.05s var(--motion-ease) .18s both}
+.hero-copy .eyebrow,.hero-copy .hero-sub,.hero-proof,.hero-actions,.hero-meta{animation:hero-copy-in .85s var(--motion-ease) both}
+.hero-copy .eyebrow{animation-delay:.1s}.hero-copy .hero-sub{animation-delay:.32s}.hero-proof{animation-delay:.4s}.hero-actions{animation-delay:.48s}.hero-meta{animation-delay:.56s}
+.hero-art{transform-style:preserve-3d;animation:art-float 7s ease-in-out infinite}
+.art-frame{overflow:hidden}
+.art-frame:after{content:"";position:absolute;inset:-35%;background:linear-gradient(110deg,transparent 38%,#ffffff13 48%,#ffffff04 52%,transparent 62%);transform:translateX(-70%) rotate(12deg);animation:frame-sheen 8s ease-in-out 1.2s infinite;pointer-events:none}
+.sun{animation:sun-breathe 5s ease-in-out infinite alternate}
+.orb-one{animation:orb-drift 8s ease-in-out infinite alternate}.orb-two{animation:orb-drift 10s ease-in-out -3s infinite alternate-reverse}
+.sound-bars i{animation:audio-pulse .65s ease-in-out infinite alternate}.sound-bars i:nth-child(2n){animation-delay:-.3s}.sound-bars i:nth-child(3n){animation-delay:-.5s}
+@keyframes hero-title-in{from{opacity:0;transform:translateY(36px);filter:blur(8px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@keyframes hero-copy-in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes art-float{0%,100%{translate:0 0;rotate:0deg}50%{translate:0 -8px;rotate:.25deg}}
+@keyframes frame-sheen{0%,35%{transform:translateX(-75%) rotate(12deg)}70%,100%{transform:translateX(75%) rotate(12deg)}}
+@keyframes sun-breathe{from{transform:scale(.96);filter:blur(1px)}to{transform:scale(1.06);filter:blur(0)}}
+@keyframes orb-drift{from{translate:-7px 10px;scale:.96}to{translate:12px -12px;scale:1.06}}
+@keyframes audio-pulse{from{transform:scaleY(.28);opacity:.55}to{transform:scaleY(1);opacity:1}}
+/* Reveal sections with a soft blur-to-focus */
+.reveal{transition:opacity .85s var(--motion-ease),transform .85s var(--motion-ease),filter .85s var(--motion-ease);filter:blur(5px)}
+.reveal.visible{filter:blur(0)}
+.video-card,.project,.service,.button,.nav-cta{transform-style:preserve-3d;will-change:transform}
+.video-card,.project{transition:transform .45s var(--motion-ease),border-color .35s,box-shadow .35s}
+.video-card:hover,.project:hover{box-shadow:0 25px 70px #0008,0 0 0 1px #c5f27718}
+.project-image{overflow:hidden}
+.project-image:before{transition:transform .8s var(--motion-ease),filter .8s var(--motion-ease)}
+.project:hover .project-image:before{transform:scale(1.08);filter:saturate(1.18)}
+.project-image .image-title,.social-card,.brand-ring{transition:transform .6s var(--motion-ease)}
+.project:hover .image-title,.project:hover .social-card,.project:hover .brand-ring{transform:translateZ(24px) scale(1.025)}
+.button-primary,.nav-cta,.filter-button{position:relative;overflow:hidden}
+.button-primary:before,.nav-cta:before,.filter-button:before{content:"";position:absolute;top:-80%;left:-45%;width:35%;height:260%;transform:translateX(-180%) rotate(22deg);background:linear-gradient(90deg,transparent,#ffffff42,transparent);transition:transform .65s var(--motion-ease);pointer-events:none}
+.button-primary:hover:before,.nav-cta:hover:before,.filter-button:hover:before{transform:translateX(520%) rotate(22deg)}
+.button-primary:hover{transform:translateY(-3px);box-shadow:0 12px 34px #c5f2771e}
+.text-link span,.project-arrow,.service-icon{display:inline-block;transition:transform .35s var(--motion-ease)}
+.text-link:hover span,.project:hover .project-arrow,.service:hover .service-icon{transform:translate(4px,-4px)}
+.ticker-track{animation-duration:32s}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.contact-section h2{position:relative}
+.contact-section h2 .accent{ text-shadow:0 0 34px #c5f27720 }
+/* Pointer ring and interactive cursor */
+.cursor-ring{position:fixed;top:0;left:0;width:34px;height:34px;border:1px solid #c5f2778c;border-radius:50%;pointer-events:none;z-index:10000;opacity:0;transform:translate(-50%,-50%);transition:width .25s,height .25s,opacity .25s,border-color .25s;mix-blend-mode:screen}
+body.pointer-active .cursor-ring{opacity:1}
+.cursor-ring.is-hover{width:54px;height:54px;background:#c5f27712;border-color:var(--accent)}
+.cursor-core{transition:opacity .2s}
+/* Small click ripple */
+.click-ripple{position:fixed;width:8px;height:8px;border:1px solid var(--accent);border-radius:50%;pointer-events:none;z-index:10001;animation:ripple-out .65s ease-out forwards}
+@keyframes ripple-out{to{opacity:0;transform:scale(7)}}
+@media(max-width:700px){#motion-canvas{opacity:.3}.motion-intro-inner{font-size:9px}.cursor-ring{display:none}.hero-art{animation-duration:9s}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.motion-intro{display:none}#motion-canvas{display:none}.hero-copy h1,.hero-copy .eyebrow,.hero-copy .hero-sub,.hero-proof,.hero-actions,.hero-meta,.hero-art,.sun,.orb-one,.orb-two,.art-frame:after,.sound-bars i{animation:none!important}.reveal{filter:none!important;transition:none!important}.click-ripple{display:none}}

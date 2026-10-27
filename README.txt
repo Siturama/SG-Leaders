@@ -1,0 +1,1 @@
+Place your MP4 video files here. Then add each video to the portfolioVideos array in ../script.js. Example: { title: "My Reel", category: "REELS", src: "videos/my-reel.mp4", description: "Short-form edit" }
