@@ -25,14 +25,14 @@ document.querySelector('#year').textContent = new Date().getFullYear();
 // Add MP4 files inside the videos/ folder and put the filename in src.
 // First 7 slots are PORTRAIT (9:16); last 3 are LANDSCAPE (16:9).
 const portfolioVideos = [
-  { title: "Podcast", category: "REELS", orientation: "portrait", src: "", description: "Add your edit and update this description." },
+  { title: "Portrait Edit 01", category: "REELS", orientation: "portrait", src: "", description: "Add your edit and update this description." },
   { title: "Portrait Edit 02", category: "CINEMATIC REEL", orientation: "portrait", src: "", description: "Add your edit and update this description." },
   { title: "Portrait Edit 03", category: "VELOCITY EDIT", orientation: "portrait", src: "", description: "Add your edit and update this description." },
   { title: "Portrait Edit 04", category: "MONTAGE", orientation: "portrait", src: "", description: "Add your edit and update this description." },
   { title: "Portrait Edit 05", category: "TRANSITIONS", orientation: "portrait", src: "", description: "Add your edit and update this description." },
   { title: "Portrait Edit 06", category: "COLOR GRADE", orientation: "portrait", src: "", description: "Add your edit and update this description." },
   { title: "Portrait Edit 07", category: "SHORT-FORM", orientation: "portrait", src: "", description: "Add your edit and update this description." },
-  { title: "Documentary Style", category: "YOUTUBE", orientation: "landscape", src: "", description: "Add your edit and update this description." },
+  { title: "Landscape Edit 01", category: "YOUTUBE", orientation: "landscape", src: "", description: "Add your edit and update this description." },
   { title: "Landscape Edit 02", category: "CINEMATIC FILM", orientation: "landscape", src: "", description: "Add your edit and update this description." },
   { title: "Landscape Edit 03", category: "SHOWREEL", orientation: "landscape", src: "", description: "Add your edit and update this description." }
 ];
@@ -70,4 +70,44 @@ if (cursorGlow && cursorCore && !window.matchMedia('(prefers-reduced-motion: red
     requestAnimationFrame(animateGlow);
   };
   animateGlow();
+}
+
+
+// Premium interactions: reading progress, gallery filters, and subtle card tilt.
+const progressFill = document.querySelector('.scroll-progress span');
+const updateProgress = () => {
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+  if (progressFill) progressFill.style.width = `${progress}%`;
+};
+window.addEventListener('scroll', updateProgress, { passive: true });
+updateProgress();
+
+const galleryFilters = document.querySelector('.gallery-filters');
+if (galleryFilters && videoGallery) {
+  galleryFilters.addEventListener('click', (event) => {
+    const button = event.target.closest('button[data-filter]');
+    if (!button) return;
+    galleryFilters.querySelectorAll('button').forEach((item) => item.classList.toggle('active', item === button));
+    const filter = button.dataset.filter;
+    videoGallery.querySelectorAll('.video-card').forEach((card) => {
+      const matches = filter === 'all' || card.classList.contains(filter);
+      card.hidden = !matches;
+    });
+    const count = videoGallery.querySelectorAll('.video-card:not([hidden])').length;
+    const countLabel = document.querySelector('#video-count');
+    if (countLabel) countLabel.textContent = `${String(count).padStart(2, '0')} PROJECT${count === 1 ? '' : 'S'}`;
+  });
+}
+
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('.project, .video-card, .service').forEach((card) => {
+    card.addEventListener('pointermove', (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width;
+      const y = (event.clientY - rect.top) / rect.height;
+      card.style.setProperty('--pointer-x', `${x * 100}%`);
+      card.style.setProperty('--pointer-y', `${y * 100}%`);
+    }, { passive: true });
+  });
 }

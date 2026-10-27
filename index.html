@@ -1,30 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <script>
-  window.va = window.va || function () {
-    (window.vaq = window.vaq || []).push(arguments);
-  };
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0b0c10" />
   <meta name="description" content="A visual portfolio for a video editor and digital creator." />
-  <title>ADITYA — Video Editor & Visual Creator</title>
+  <title>YOUR NAME — Video Editor & Visual Creator</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
+  <!-- Vercel Web Analytics for this static HTML site -->
+  <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
   <div class="cursor-glow" aria-hidden="true"></div>
   <div class="cursor-core" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
   <header class="nav-wrap">
     <nav class="nav container" aria-label="Main navigation">
-      <a class="brand" href="#home" aria-label="Home"><span class="brand-mark">Y.</span><span>SITURAMA<span class="brand-dot">/</span></span></a>
+      <a class="brand" href="#home" aria-label="Home"><span class="brand-mark">Y.</span><span>YOUR NAME<span class="brand-dot">/</span></span></a>
       <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span></button>
       <div class="nav-links">
         <a href="#videos">Videos</a><a href="#work">Work</a><a href="#about">About</a><a href="#services">Services</a><a href="#contact" class="nav-cta">Let's talk <span>↗</span></a>
@@ -37,7 +35,7 @@
       <div class="hero-copy reveal">
         <p class="eyebrow"><span class="status-dot"></span> AVAILABLE FOR SELECT PROJECTS</p>
         <h1>I turn raw footage<br>into <span class="accent">feeling.</span></h1>
-        <p class="hero-sub">Video editor & visual storyteller crafting clean, cinematic edits that make people stop scrolling.</p>
+        <p class="hero-sub">Video editor & visual storyteller crafting clean, cinematic edits that make people stop scrolling.</p><div class="hero-proof"><span><i></i> STORY-DRIVEN EDITING</span><span>FRAME BY FRAME / INTENTIONALLY</span></div>
         <div class="hero-actions"><a class="button button-primary" href="#work">Explore my work <span>↘</span></a><a class="text-link" href="#contact">Have a project? <span>↗</span></a></div>
         <div class="hero-meta"><span>BASED IN INDIA</span><span class="meta-line"></span><span>EDITING · STORY · MOTION</span></div>
       </div>
@@ -58,6 +56,7 @@
 
     <section class="section container video-section" id="videos">
       <div class="section-heading reveal"><div><p class="eyebrow">01 / VIDEO PORTFOLIO</p><h2>Press play.<br><span class="muted">See the work.</span></h2></div><p class="heading-note">My edits, reels, and cinematic projects — all in one place.</p></div>
+      <div class="gallery-toolbar reveal"><p>THE CUTS / <span id="video-count">10 PROJECTS</span></p><div class="gallery-filters" role="group" aria-label="Filter video projects"><button class="filter-button active" data-filter="all" type="button">ALL WORK</button><button class="filter-button" data-filter="portrait" type="button">VERTICAL 9:16</button><button class="filter-button" data-filter="landscape" type="button">WIDE 16:9</button></div></div>
       <div id="video-gallery" class="video-gallery" aria-live="polite"></div>
       <p class="video-help">10 VIDEO SLOTS: 7 portrait (9:16) + 3 landscape (16:9). Add MP4 files in <code>videos</code> and set each slot’s <code>src</code> in <code>script.js</code>.</p>
     </section>
@@ -99,6 +98,6 @@
 
     <section class="contact-section" id="contact"><div class="container contact-inner reveal"><p class="eyebrow"><span class="status-dot"></span> 05 / YOUR NEXT PROJECT</p><h2>Have a story?<br><span class="accent">Let's shape it.</span></h2><p class="contact-sub">Tell me what you're building. Let's make something worth watching.</p><a class="button button-primary" href="mailto:YOUR_EMAIL@example.com?subject=Let's%20work%20together">Start a conversation <span>↗</span></a><div class="contact-foot"><span>YOUR NAME / VIDEO EDITOR</span><span>OPEN TO CREATIVE PROJECTS</span></div></div></section>
   </main>
-  <footer class="footer container"><a class="brand" href="#home"><span class="brand-mark">Y.</span><span>ADITYA<span class="brand-dot">/</span></span></a><span>DESIGNED WITH INTENTION © <span id="year"></span></span><div class="footer-links"><a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram ↗</a><a href="https://www.youtube.com/" target="_blank" rel="noreferrer">YouTube ↗</a><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn ↗</a></div></footer>
+  <footer class="footer container"><a class="brand" href="#home"><span class="brand-mark">Y.</span><span>YOUR NAME<span class="brand-dot">/</span></span></a><span>DESIGNED WITH INTENTION © <span id="year"></span></span><div class="footer-links"><a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram ↗</a><a href="https://www.youtube.com/" target="_blank" rel="noreferrer">YouTube ↗</a><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn ↗</a></div></footer>
 </body>
 </html>
