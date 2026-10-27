@@ -32,7 +32,7 @@ const portfolioVideos = [
   { title: "Portrait Edit 05", category: "TRANSITIONS", orientation: "portrait", src: "", description: "Add your edit and update this description." },
   { title: "Portrait Edit 06", category: "COLOR GRADE", orientation: "portrait", src: "", description: "Add your edit and update this description." },
   { title: "Portrait Edit 07", category: "SHORT-FORM", orientation: "portrait", src: "", description: "Add your edit and update this description." },
-  { title: "Landscape Edit 01", category: "YOUTUBE", orientation: "landscape", src: "", description: "Add your edit and update this description." },
+  { title: "Documentary Style", category: "YOUTUBE", orientation: "landscape", src: "", description: "Add your edit and update this description." },
   { title: "Landscape Edit 02", category: "CINEMATIC FILM", orientation: "landscape", src: "", description: "Add your edit and update this description." },
   { title: "Landscape Edit 03", category: "SHOWREEL", orientation: "landscape", src: "", description: "Add your edit and update this description." }
 ];
