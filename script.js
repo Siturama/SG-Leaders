@@ -25,16 +25,18 @@ document.querySelector('#year').textContent = new Date().getFullYear();
 // Add MP4 files inside the videos/ folder and put the filename in src.
 // First 7 slots are PORTRAIT (9:16); last 3 are LANDSCAPE (16:9).
 const portfolioVideos = [
-  { title: "Portrait Edit 01", category: "REELS", orientation: "portrait", src: "", description: "Add your edit and update this description." },
-  { title: "Portrait Edit 02", category: "CINEMATIC REEL", orientation: "portrait", src: "", description: "Add your edit and update this description." },
-  { title: "Portrait Edit 03", category: "VELOCITY EDIT", orientation: "portrait", src: "", description: "Add your edit and update this description." },
-  { title: "Portrait Edit 04", category: "MONTAGE", orientation: "portrait", src: "", description: "Add your edit and update this description." },
-  { title: "Portrait Edit 05", category: "TRANSITIONS", orientation: "portrait", src: "", description: "Add your edit and update this description." },
-  { title: "Portrait Edit 06", category: "COLOR GRADE", orientation: "portrait", src: "", description: "Add your edit and update this description." },
-  { title: "Portrait Edit 07", category: "SHORT-FORM", orientation: "portrait", src: "", description: "Add your edit and update this description." },
-  { title: "Landscape Edit 01", category: "YOUTUBE", orientation: "landscape", src: "", description: "Add your edit and update this description." },
-  { title: "Landscape Edit 02", category: "CINEMATIC FILM", orientation: "landscape", src: "", description: "Add your edit and update this description." },
-  { title: "Landscape Edit 03", category: "SHOWREEL", orientation: "landscape", src: "", description: "Add your edit and update this description." }
+  { title: "Reel / The First Frame", category: "CINEMATIC REEL", orientation: "portrait", src: "", description: "A vertical story built around pacing, mood, and detail." },
+  { title: "Velocity Study", category: "VELOCITY EDIT", orientation: "portrait", src: "", description: "Rhythm-led cuts with clean speed changes." },
+  { title: "Golden Hour", category: "COLOR GRADE", orientation: "portrait", src: "", description: "Warm tones, controlled contrast, and a cinematic finish." },
+  { title: "On the Move", category: "SHORT-FORM", orientation: "portrait", src: "", description: "A fast, social-first edit designed to keep attention." },
+  { title: "Frame by Frame", category: "TRANSITIONS", orientation: "portrait", src: "", description: "Seamless transitions with movement that feels intentional." },
+  { title: "After Hours", category: "MOOD EDIT", orientation: "portrait", src: "", description: "A compact visual story with atmosphere and texture." },
+  { title: "The Bigger Picture", category: "YOUTUBE", orientation: "landscape", src: "", description: "A wide-format edit with a clear story and confident pacing." },
+  { title: "Beyond the Ordinary", category: "CINEMATIC FILM", orientation: "landscape", src: "", description: "A cinematic sequence shaped by light, sound, and movement." },
+  { title: "Brand in Motion", category: "BRAND FILM", orientation: "landscape", src: "", description: "A polished brand story with a strong visual identity." },
+  { title: "The Journey", category: "TRAVEL FILM", orientation: "landscape", src: "", description: "Atmospheric travel visuals with a natural narrative flow." },
+  { title: "Sound & Vision", category: "MUSIC EDIT", orientation: "landscape", src: "", description: "Visual rhythm built around the energy of the soundtrack." },
+  { title: "Selected Frames", category: "SHOWREEL", orientation: "landscape", src: "", description: "A compact showcase of editing style, detail, and range." }
 ];
 
 const videoGallery = document.querySelector('#video-gallery');
@@ -85,14 +87,24 @@ updateProgress();
 
 const galleryFilters = document.querySelector('.gallery-filters');
 if (galleryFilters && videoGallery) {
+  videoGallery.classList.add('all-layout');
   galleryFilters.addEventListener('click', (event) => {
     const button = event.target.closest('button[data-filter]');
     if (!button) return;
     galleryFilters.querySelectorAll('button').forEach((item) => item.classList.toggle('active', item === button));
     const filter = button.dataset.filter;
+    videoGallery.classList.toggle('portrait-layout', filter === 'portrait');
+    videoGallery.classList.toggle('landscape-layout', filter === 'landscape');
+    videoGallery.classList.toggle('all-layout', filter === 'all');
     videoGallery.querySelectorAll('.video-card').forEach((card) => {
       const matches = filter === 'all' || card.classList.contains(filter);
       card.hidden = !matches;
+      if (matches) {
+        card.classList.remove('filter-enter');
+        requestAnimationFrame(() => card.classList.add('filter-enter'));
+      } else {
+        card.classList.remove('filter-enter');
+      }
     });
     const count = videoGallery.querySelectorAll('.video-card:not([hidden])').length;
     const countLabel = document.querySelector('#video-count');

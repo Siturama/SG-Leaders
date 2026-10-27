@@ -7,7 +7,7 @@ A responsive plain HTML/CSS/JavaScript portfolio designed for GitHub + Vercel. N
 - Sticky glass navigation, animated scroll reveal, and top reading-progress line
 - Mouse-follow glow and subtle pointer highlight on project cards
 - Video gallery filters: all work, vertical 9:16, and wide 16:9
-- 10 video slots: 7 portrait and 3 landscape
+- 12 video slots: 6 portrait and 6 landscape
 - Responsive layout, mobile menu, reduced-motion accessibility support
 - Existing Vercel Analytics snippet is preserved if already added to `index.html`
 
