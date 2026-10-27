@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0c10" />
+  <meta name="description" content="A visual portfolio for a video editor and digital creator." />
+  <title>YOUR NAME — Video Editor & Visual Creator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="cursor-core" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="nav-wrap">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Home"><span class="brand-mark">Y.</span><span>YOUR NAME<span class="brand-dot">/</span></span></a>
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span></button>
+      <div class="nav-links">
+        <a href="#videos">Videos</a><a href="#work">Work</a><a href="#about">About</a><a href="#services">Services</a><a href="#contact" class="nav-cta">Let's talk <span>↗</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero container" id="home">
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span class="status-dot"></span> AVAILABLE FOR SELECT PROJECTS</p>
+        <h1>I turn raw footage<br>into <span class="accent">feeling.</span></h1>
+        <p class="hero-sub">Video editor & visual storyteller crafting clean, cinematic edits that make people stop scrolling.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#work">Explore my work <span>↘</span></a><a class="text-link" href="#contact">Have a project? <span>↗</span></a></div>
+        <div class="hero-meta"><span>BASED IN INDIA</span><span class="meta-line"></span><span>EDITING · STORY · MOTION</span></div>
+      </div>
+      <div class="hero-art reveal" aria-label="Abstract video editing artwork">
+        <div class="art-top"><span>VISUAL STUDY — 001</span><span>00:01:24:16</span></div>
+        <div class="art-frame">
+          <div class="sun"></div><div class="orb orb-one"></div><div class="orb orb-two"></div>
+          <div class="frame-cross cross-h"></div><div class="frame-cross cross-v"></div>
+          <div class="frame-caption"><span>FRAME / FEEL</span><span>01 — 04</span></div>
+        </div>
+        <div class="art-bottom"><span>COLOR / RHYTHM / STORY</span><span class="sound-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+        <div class="art-stamp">PLAY<br>WITH<br>PURPOSE<span>↗</span></div>
+      </div>
+      <div class="hero-scroll"><span class="scroll-line"></span> SCROLL TO EXPLORE</div>
+    </section>
+
+    <section class="ticker" aria-label="Specialties"><div class="ticker-track"><span>STORY FIRST</span><b>✳</b><span>PRECISE PACING</span><b>✳</b><span>CINEMATIC COLOR</span><b>✳</b><span>SOUND DESIGN</span><b>✳</b><span>STORY FIRST</span><b>✳</b><span>PRECISE PACING</span><b>✳</b><span>CINEMATIC COLOR</span><b>✳</b><span>SOUND DESIGN</span><b>✳</b></div></section>
+
+    <section class="section container video-section" id="videos">
+      <div class="section-heading reveal"><div><p class="eyebrow">01 / VIDEO PORTFOLIO</p><h2>Press play.<br><span class="muted">See the work.</span></h2></div><p class="heading-note">My edits, reels, and cinematic projects — all in one place.</p></div>
+      <div id="video-gallery" class="video-gallery" aria-live="polite"></div>
+      <p class="video-help">10 VIDEO SLOTS: 7 portrait (9:16) + 3 landscape (16:9). Add MP4 files in <code>videos</code> and set each slot’s <code>src</code> in <code>script.js</code>.</p>
+    </section>
+
+    <section class="section container" id="work">
+      <div class="section-heading reveal"><div><p class="eyebrow">02 / SELECTED WORK</p><h2>Made to be <span class="muted">remembered.</span></h2></div><p class="heading-note">A few concepts and projects that show how I think, cut, and build a story.</p></div>
+      <div class="work-grid">
+        <a class="project project-large reveal" href="#contact" aria-label="Discuss a cinematic film project">
+          <div class="project-image image-cinema"><div class="project-grid-lines"></div><span class="image-index">PROJECT 001 / FILM</span><span class="image-title">AFTER<br>THE LIGHT</span><span class="image-play">↗</span><div class="image-bottom"><span>COLOR GRADE · SOUND DESIGN</span><span>01:24</span></div></div>
+          <div class="project-info"><div><h3>After the Light</h3><p>Cinematic edit / Color story</p></div><span class="project-arrow">↗</span></div>
+        </a>
+        <a class="project reveal" href="#contact" aria-label="Discuss a social media edit project">
+          <div class="project-image image-social"><span class="image-index">PROJECT 002 / SOCIAL</span><div class="social-card"><span>MAKE IT</span><strong>MATTER.</strong><span class="social-mini">A SHORT-FORM STUDY ↗</span></div><span class="image-bottom"><span>SHORT-FORM · RHYTHM</span><span>00:32</span></span></div>
+          <div class="project-info"><div><h3>Make It Matter</h3><p>Social campaign / Short-form</p></div><span class="project-arrow">↗</span></div>
+        </a>
+        <a class="project reveal" href="#contact" aria-label="Discuss a brand film project">
+          <div class="project-image image-brand"><span class="image-index">PROJECT 003 / BRAND</span><div class="brand-ring"><span>FORM<br>FOLLOWS<br>FEELING</span></div><span class="image-bottom"><span>BRAND FILM · MOTION</span><span>00:48</span></div>
+          <div class="project-info"><div><h3>Form / Feeling</h3><p>Brand film / Motion design</p></div><span class="project-arrow">↗</span></div>
+        </a>
+      </div>
+      <p class="project-disclaimer">Portfolio concepts shown as placeholders — replace these with your real work.</p>
+    </section>
+
+    <section class="about-section" id="about"><div class="container about-layout">
+      <div class="about-label reveal"><p class="eyebrow">03 / A LITTLE ABOUT ME</p><div class="about-number">01<span>—</span>03</div></div>
+      <div class="about-copy reveal"><h2>Good editing isn't just what you <span class="accent">see.</span><br>It's what you <span class="accent">feel.</span></h2><p>I'm a video editor focused on turning ideas into clear, compelling visual stories. From the first cut to the final sound detail, every choice has a reason.</p><p>I care about pacing, visual consistency, intentional transitions, and edits that feel natural—not just flashy.</p><a href="#contact" class="text-link">Let's make something meaningful <span>↗</span></a></div>
+      <div class="about-side reveal"><div class="side-stat"><strong>01</strong><span>STORY BEFORE EFFECTS</span></div><div class="side-stat"><strong>02</strong><span>DETAIL IN EVERY FRAME</span></div><div class="side-stat"><strong>03</strong><span>BUILT FOR THE AUDIENCE</span></div><div class="side-note">THE GOAL ISN'T MORE EFFECTS.<br>IT'S MORE IMPACT.</div></div>
+    </div></section>
+
+    <section class="section container" id="services">
+      <div class="section-heading reveal"><div><p class="eyebrow">04 / WHAT I DO</p><h2>From first cut<br>to <span class="muted">final frame.</span></h2></div><p class="heading-note">Flexible creative support for creators, brands, and people with a story to tell.</p></div>
+      <div class="services-list">
+        <article class="service reveal"><span class="service-no">01</span><div><h3>Video Editing</h3><p>Story-driven edits, clean pacing, and seamless transitions.</p></div><span class="service-icon">↗</span></article>
+        <article class="service reveal"><span class="service-no">02</span><div><h3>Short-form Content</h3><p>Reels, Shorts, and social videos designed to hold attention.</p></div><span class="service-icon">↗</span></article>
+        <article class="service reveal"><span class="service-no">03</span><div><h3>Sound & Color</h3><p>Thoughtful sound effects, music timing, and cohesive color.</p></div><span class="service-icon">↗</span></article>
+        <article class="service reveal"><span class="service-no">04</span><div><h3>Motion & Titles</h3><p>Purposeful text animation and graphics that support the story.</p></div><span class="service-icon">↗</span></article>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact"><div class="container contact-inner reveal"><p class="eyebrow"><span class="status-dot"></span> 05 / YOUR NEXT PROJECT</p><h2>Have a story?<br><span class="accent">Let's shape it.</span></h2><p class="contact-sub">Tell me what you're building. Let's make something worth watching.</p><a class="button button-primary" href="mailto:YOUR_EMAIL@example.com?subject=Let's%20work%20together">Start a conversation <span>↗</span></a><div class="contact-foot"><span>YOUR NAME / VIDEO EDITOR</span><span>OPEN TO CREATIVE PROJECTS</span></div></div></section>
+  </main>
+  <footer class="footer container"><a class="brand" href="#home"><span class="brand-mark">Y.</span><span>YOUR NAME<span class="brand-dot">/</span></span></a><span>DESIGNED WITH INTENTION © <span id="year"></span></span><div class="footer-links"><a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram ↗</a><a href="https://www.youtube.com/" target="_blank" rel="noreferrer">YouTube ↗</a><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn ↗</a></div></footer>
+</body>
+</html>
