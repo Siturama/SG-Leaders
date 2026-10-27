@@ -25,7 +25,7 @@ document.querySelector('#year').textContent = new Date().getFullYear();
 // Add MP4 files inside the videos/ folder and put the filename in src.
 // First 7 slots are PORTRAIT (9:16); last 3 are LANDSCAPE (16:9).
 const portfolioVideos = [
-  { title: "Portrait Edit 01", category: "REELS", orientation: "portrait", src: "", description: "Add your edit and update this description." },
+  { title: "Podcast", category: "REELS", orientation: "portrait", src: "", description: "Add your edit and update this description." },
   { title: "Portrait Edit 02", category: "CINEMATIC REEL", orientation: "portrait", src: "", description: "Add your edit and update this description." },
   { title: "Portrait Edit 03", category: "VELOCITY EDIT", orientation: "portrait", src: "", description: "Add your edit and update this description." },
   { title: "Portrait Edit 04", category: "MONTAGE", orientation: "portrait", src: "", description: "Add your edit and update this description." },
