@@ -25,7 +25,7 @@ document.querySelector('#year').textContent = new Date().getFullYear();
 // Add MP4 files inside the videos/ folder and put the filename in src.
 // First 7 slots are PORTRAIT (9:16); last 3 are LANDSCAPE (16:9).
 const portfolioVideos = [
-  { title: "Reel / The First Frame", category: "CINEMATIC REEL", orientation: "portrait", src: "", description: "A vertical story built around pacing, mood, and detail." },
+  { title: "The Minimal Visuals", category: "PODCAST REEL", orientation: "portrait", src: "https://h21vlpygryuiphuf.public.blob.vercel-storage.com/Podcast%20Edited.mp4", description: "A vertical story built around pacing, mood, and detail." },
   { title: "Velocity Study", category: "VELOCITY EDIT", orientation: "portrait", src: "", description: "Rhythm-led cuts with clean speed changes." },
   { title: "Golden Hour", category: "COLOR GRADE", orientation: "portrait", src: "", description: "Warm tones, controlled contrast, and a cinematic finish." },
   { title: "On the Move", category: "SHORT-FORM", orientation: "portrait", src: "", description: "A fast, social-first edit designed to keep attention." },
